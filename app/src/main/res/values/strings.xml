@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CoolMovies</string>
+
+    <!--Dynamic module titles-->
+    <string name="feature_movies">feature movies</string>
+    <string name="feature_tvseries">feature tvseries</string>
+    <string name="feature_favourite">feature favourite</string>
+    <string name="feature_profile">feature profile</string>
+
+    <!--Bottom menu-->
+    <string name="movies">Movies</string>
+    <string name="tv_series">TV Series</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
+</resources>
