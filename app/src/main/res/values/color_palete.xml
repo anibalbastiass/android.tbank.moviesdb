@@ -10,4 +10,6 @@
     <color name="light_screen">#8bc34a</color>
     <color name="light_screen_dark">#5a9216</color>
     <color name="light_screen_accent">#bef67a</color>
+
+    <color name="grey_background">#eeeeee</color>
 </resources>

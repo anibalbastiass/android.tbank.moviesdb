@@ -5,6 +5,7 @@ private object TestLibraryVersion {
     const val ESPRESSO_CORE = "3.0.2"
     const val MOCKK = "1.10.0"
     const val ANDROID_X_TEST = "2.1.0"
+    const val ROOM = "2.2.5"
 }
 
 object TestLibraryDependency {
@@ -16,4 +17,5 @@ object TestLibraryDependency {
     const val MOCKK = "io.mockk:mockk:${TestLibraryVersion.MOCKK}"
     const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${CoreVersion.COROUTINES_ANDROID}"
     const val ANDROID_X_CORE_TESTING = "android.arch.core:core-testing:${TestLibraryVersion.ANDROID_X_TEST}"
+    const val ROOM_TESTING =  "androidx.room:room-testing:${TestLibraryVersion.ROOM}"
 }

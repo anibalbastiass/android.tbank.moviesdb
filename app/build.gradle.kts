@@ -7,6 +7,7 @@ plugins {
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
     id(GradlePluginId.KTLINT_GRADLE)
     id(GradlePluginId.SAFE_ARGS)
+    kotlin(GradlePluginId.KAPT)
 }
 
 android {
@@ -26,6 +27,14 @@ android {
         buildConfigFieldFromGradleProperty("apiToken")
 
         buildConfigField("FEATURE_MODULE_NAMES", getDynamicFeatureModuleNames())
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas".toString())
+                arg("room.incremental", "true")
+                arg("room.expandProjection", "true")
+            }
+        }
     }
 
     buildTypes {
@@ -64,6 +73,22 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    dataBinding {
+        isEnabled = true
+    }
+
+    androidExtensions {
+        isExperimental = true
+    }
+
+
+    // APK Release name
+    setProperty("archivesBaseName", "coolMoviesApp-v${AndroidConfig.VERSION_NAME}")
+}
+
+kapt {
+    generateStubs = true
 }
 
 dependencies {
@@ -84,6 +109,11 @@ dependencies {
     api(LibraryDependency.FRAGMENT_KTX)
     api(LibraryDependency.K_ANDROID)
     api(LibraryDependency.LOTTIE)
+
+    api(LibraryDependency.ROOM_RUNTIME)
+    api(LibraryDependency.ROOM_KTX)
+    kapt(LibraryDependency.ROOM_COMPILER)
+
 }
 
 fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {

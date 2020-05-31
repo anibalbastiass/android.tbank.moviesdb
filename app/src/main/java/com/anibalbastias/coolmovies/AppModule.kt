@@ -1,8 +1,8 @@
 package com.anibalbastias.coolmovies
 
+import androidx.room.Room
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.anibalbastias.coolmovies.app.data.retrofit.AuthenticationInterceptor
-import com.anibalbastias.coolmovies.app.data.retrofit.UserAgentInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.Kodein
@@ -18,8 +18,6 @@ val appModule = Kodein.Module("${MODULE_NAME}Module") {
 
     bind() from singleton { AuthenticationInterceptor(BuildConfig.GRADLE_API_TOKEN) }
 
-    bind() from singleton { UserAgentInterceptor() }
-
     bind<HttpLoggingInterceptor>() with singleton {
         HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -34,7 +32,6 @@ val appModule = Kodein.Module("${MODULE_NAME}Module") {
         instance<OkHttpClient.Builder>()
             .addNetworkInterceptor(StethoInterceptor())
             .addInterceptor(instance<AuthenticationInterceptor>())
-            .addInterceptor(instance<UserAgentInterceptor>())
             .addInterceptor(instance<HttpLoggingInterceptor>())
             .build()
     }

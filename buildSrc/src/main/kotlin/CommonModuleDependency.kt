@@ -13,6 +13,7 @@ fun DependencyHandler.addTestDependencies() {
     testImplementation(TestLibraryDependency.MOCKK)
     testImplementation(TestLibraryDependency.COROUTINES_TEST)
     testImplementation(TestLibraryDependency.ANDROID_X_CORE_TESTING)
+    testImplementation(TestLibraryDependency.ROOM_TESTING)
 }
 
 @Suppress("detekt.UnusedPrivateMember")
@@ -23,8 +24,7 @@ private fun DependencyHandler.implementation(dependencyNotation: Any): Dependenc
 private fun DependencyHandler.api(dependencyNotation: Any): Dependency? =
     add("api", dependencyNotation)
 
-@Suppress("detekt.UnusedPrivateMember")
-private fun DependencyHandler.kapt(dependencyNotation: Any): Dependency? =
+fun DependencyHandler.kapt(dependencyNotation: Any): Dependency? =
     add("kapt", dependencyNotation)
 
 private fun DependencyHandler.testImplementation(dependencyNotation: Any): Dependency? =
