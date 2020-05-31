@@ -106,6 +106,7 @@ dependencies {
     api(LibraryDependency.COORDINATOR_LAYOUT)
     api(LibraryDependency.RECYCLER_VIEW)
     api(LibraryDependency.MATERIAL)
+    api(LibraryDependency.SWIPE_REFRESH_LAYOUT)
     api(LibraryDependency.FRAGMENT_KTX)
     api(LibraryDependency.K_ANDROID)
     api(LibraryDependency.LOTTIE)
@@ -114,6 +115,9 @@ dependencies {
     api(LibraryDependency.ROOM_KTX)
     kapt(LibraryDependency.ROOM_COMPILER)
 
+}
+repositories {
+    google()
 }
 
 fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {

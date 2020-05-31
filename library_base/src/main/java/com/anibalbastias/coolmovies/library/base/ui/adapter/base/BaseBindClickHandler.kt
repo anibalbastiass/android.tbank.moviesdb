@@ -1,4 +1,4 @@
-package com.anibalbastias.coolmovies.library.base.presentation.adapter.base
+package com.anibalbastias.coolmovies.library.base.ui.adapter.base
 
 import android.view.View
 

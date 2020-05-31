@@ -2,7 +2,7 @@ package com.anibalbastias.coolmovies.feature.movies.ui
 
 import coil.ImageLoader
 import com.anibalbastias.coolmovies.feature.movies.MODULE_NAME
-import com.anibalbastias.coolmovies.feature.movies.ui.list.recyclerview.MovieAdapter
+import com.anibalbastias.coolmovies.feature.movies.ui.list.adapter.MovieAdapter
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance

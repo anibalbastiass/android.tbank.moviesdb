@@ -1,6 +1,7 @@
 package com.anibalbastias.coolmovies.feature.movies.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import com.anibalbastias.coolmovies.feature.movies.domain.model.DomainConfiguration
 import com.anibalbastias.coolmovies.feature.movies.domain.usecase.GetConfigurationUseCase
 import com.anibalbastias.coolmovies.feature.movies.domain.usecase.GetDiscoverMoviesUseCase
 import com.anibalbastias.coolmovies.feature.movies.presentation.action.MovieListAction
@@ -17,6 +18,8 @@ internal class MovieListViewModel(
     MovieListViewState()
 ) {
 
+    private lateinit var uiConfiguration: DomainConfiguration
+
     override fun onLoadData() {
         getConfiguration()
     }
@@ -25,7 +28,7 @@ internal class MovieListViewModel(
         is MovieListAction.MovieListLoadingSuccess -> state.copy(
             isLoading = false,
             isError = false,
-            movies = with(uiDiscoverMoviesMapper) { viewAction.movies.map { it.fromDomainToUi() } }
+            movies = with(uiDiscoverMoviesMapper) { viewAction.movies.map { it.fromDomainToUi(uiConfiguration) } }
         )
         is MovieListAction.MovieListLoadingFailure -> state.copy(
             isLoading = false,
@@ -37,6 +40,7 @@ internal class MovieListViewModel(
     private fun getConfiguration() {
         viewModelScope.launch {
             getConfigurationUseCase.execute()?.also {
+                uiConfiguration = it
                 getMovieList()
             }
         }

@@ -1,10 +1,10 @@
-package com.anibalbastias.coolmovies.library.base.presentation.adapter.customBase
+package com.anibalbastias.coolmovies.library.base.ui.adapter.customBase
 
 import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.anibalbastias.coolmovies.library.base.presentation.adapter.base.BaseBindClickHandler
+import com.anibalbastias.coolmovies.library.base.ui.adapter.base.BaseBindClickHandler
 
 abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

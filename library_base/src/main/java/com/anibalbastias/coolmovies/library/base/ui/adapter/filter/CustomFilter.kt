@@ -1,7 +1,7 @@
 package com.anibalbastias.library.base.presentation.adapter.filter
 
 import android.widget.Filter
-import com.anibalbastias.coolmovies.library.base.presentation.adapter.base.SingleLayoutBindRecyclerAdapter
+import com.anibalbastias.coolmovies.library.base.ui.adapter.base.SingleLayoutBindRecyclerAdapter
 import java.util.*
 
 

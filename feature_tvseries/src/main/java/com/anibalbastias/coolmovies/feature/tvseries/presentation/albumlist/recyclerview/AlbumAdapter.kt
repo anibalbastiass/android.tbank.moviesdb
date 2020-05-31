@@ -9,7 +9,7 @@ import coil.transform.RoundedCornersTransformation
 import com.anibalbastias.coolmovies.feature.tvseries.R
 import com.anibalbastias.coolmovies.feature.tvseries.domain.model.AlbumDomainModel
 import com.anibalbastias.coolmovies.library.base.delegate.observer
-import com.anibalbastias.coolmovies.library.base.presentation.extension.setOnDebouncedClickListener
+import com.anibalbastias.coolmovies.library.base.ui.extension.setOnDebouncedClickListener
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.show
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*

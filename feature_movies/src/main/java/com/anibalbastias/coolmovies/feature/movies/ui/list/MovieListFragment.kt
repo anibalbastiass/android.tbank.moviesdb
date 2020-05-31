@@ -2,19 +2,25 @@ package com.anibalbastias.coolmovies.feature.movies.ui.list
 
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
-import androidx.room.Room
-import com.anibalbastias.coolmovies.app.CoolMoviesApplication
+import androidx.recyclerview.widget.GridLayoutManager
 import com.anibalbastias.coolmovies.feature.movies.R
-import com.anibalbastias.coolmovies.feature.movies.data.room.Constants
-import com.anibalbastias.coolmovies.feature.movies.data.room.MoviesDatabase
-import com.anibalbastias.coolmovies.feature.movies.ui.list.recyclerview.MovieAdapter
-import com.anibalbastias.coolmovies.feature.movies.ui.list.recyclerview.GridAutofitLayoutManager
+import com.anibalbastias.coolmovies.feature.movies.databinding.FragmentMovieListBinding
+import com.anibalbastias.coolmovies.feature.movies.presentation.model.UiMovieItem
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewmodel.MovieListViewModel
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewstate.MovieListViewState
 import com.anibalbastias.coolmovies.feature.movies.ui.MoviesNavigator
+import com.anibalbastias.coolmovies.feature.movies.ui.list.adapter.MovieAdapter
 import com.anibalbastias.coolmovies.library.base.presentation.extension.observe
 import com.anibalbastias.coolmovies.library.base.presentation.fragment.BaseContainerFragment
+import com.anibalbastias.coolmovies.library.base.ui.adapter.base.BaseBindClickHandler
+import com.anibalbastias.coolmovies.library.base.ui.extension.applyFontForToolbarTitle
+import com.anibalbastias.coolmovies.library.base.ui.extension.initSwipe
+import com.anibalbastias.coolmovies.library.base.ui.extension.runLayoutAnimation
+import com.anibalbastias.coolmovies.library.base.ui.extension.setNoArrowUpToolbar
 import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 import org.kodein.di.generic.instance
@@ -26,8 +32,13 @@ class MovieListFragment : BaseContainerFragment() {
     private val movieAdapter: MovieAdapter by instance()
     private val movieNavigator: MoviesNavigator by instance()
 
+    private lateinit var binding: FragmentMovieListBinding
+
     private val stateObserver = Observer<MovieListViewState> {
-        movieAdapter.movies = it.movies
+        movieAdapter.items = it.movies.toMutableList()
+        movieAdapter.notifyDataSetChanged()
+
+        srlMovies.isRefreshing = it.isLoading
         progressBar.visible = it.isLoading
         errorAnimation.visible = it.isError
     }
@@ -35,30 +46,33 @@ class MovieListFragment : BaseContainerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Room.databaseBuilder(
-            CoolMoviesApplication.appContext,
-            MoviesDatabase::class.java,
-            Constants.DATABASE_NAME
-        ).allowMainThreadQueries().build()
+        binding = DataBindingUtil.bind<ViewDataBinding>(view) as FragmentMovieListBinding
+        binding.lifecycleOwner = this
 
         val context = requireContext()
 
-        movieAdapter.setOnDebouncedClickListener {
-//            movieNavigator.navigateToAlbumDetails(it.artist, it.name, it.mbId)
+        movieAdapter.clickHandler = object : BaseBindClickHandler<UiMovieItem> {
+            override fun onClickView(view: View, item: UiMovieItem) {
+                movieNavigator.navigateToMovieDetails(item)
+            }
         }
 
-        recyclerView.apply {
-            setHasFixedSize(true)
-            val columnWidth = context.resources.getDimension(R.dimen.image_size).toInt()
-            layoutManager =
-                GridAutofitLayoutManager(
-                    context,
-                    columnWidth
-                )
+        tbMovies.apply {
+            applyFontForToolbarTitle(requireActivity())
+            setNoArrowUpToolbar(requireActivity())
+        }
+
+        rvMovies.apply {
+            layoutManager = GridLayoutManager(context, 3)
             adapter = movieAdapter
+            runLayoutAnimation()
         }
 
         observe(viewModel.stateLiveData, stateObserver)
         viewModel.loadData()
+
+        srlMovies.initSwipe {
+            viewModel.loadData()
+        }
     }
 }

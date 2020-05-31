@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#8bc34a</color>
+    <color name="primaryColor">#8bc34a</color>
     <color name="white">#ffffff</color>
+
+    <color name="transparent">#00ffffff</color>
+    <color name="textPrimaryColor">#3a3a3a</color>
+    <color name="circle2Color">#71d1e5</color>
 </resources>
