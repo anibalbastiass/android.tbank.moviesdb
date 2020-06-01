@@ -111,6 +111,6 @@ workflows:
       - build_app:
           requires:
             - lint
-            - detekt
+#            - detekt
             - ktlint
             - unit_test
