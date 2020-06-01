@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="movieDetails"
+            type="com.anibalbastias.coolmovies.feature.movies.presentation.model.details.UiMovieDetails" />
+
+        <variable
+            name="movieCredits"
+            type="com.anibalbastias.coolmovies.feature.movies.presentation.model.details.credits.UiMovieCredits" />
+
+        <variable
+            name="movieRecommendations"
+            type="com.anibalbastias.coolmovies.feature.movies.presentation.model.details.recommendations.UiMovieRecommendations" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cvContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_20">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvUserContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:animateLayoutChanges="true"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            card_view:cardCornerRadius="@dimen/dp_4"
+            card_view:cardElevation="@dimen/dp_4"
+            card_view:cardUseCompatPadding="false">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:minHeight="@dimen/dp_300"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_8">
+
+                <ImageView
+                    android:id="@+id/ivCover"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="@dimen/dp_150"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:contentDescription="@string/itemDescription"
+                    android:scaleType="centerCrop"
+                    android:transitionName="firstTransitionName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:setImageUrl="@{movieDetails.posterPath}"
+                    tools:ignore="UnusedAttribute"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tvTagline"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@{movieDetails.tagLine}"
+                    android:textColor="@color/shark"
+                    android:textSize="@dimen/sp_16"
+                    android:visibility="@{movieDetails.tagLine == `` ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCover"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <TextView
+                    android:id="@+id/tvRelease"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_regular"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@{movieDetails.releaseDate}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCover"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTagline"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <TextView
+                    android:id="@+id/tvRuntime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_regular"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@{movieDetails.runtime}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCover"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRelease"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <TextView
+                    android:id="@+id/tvRating"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_regular"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@{movieDetails.voteAverage}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCover"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRuntime"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <TextView
+                    android:id="@+id/tvBudget"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_regular"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@{movieDetails.budget}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCover"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRating"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <TextView
+                    android:id="@+id/tvRevenue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_regular"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@{movieDetails.revenue}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCover"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBudget"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <TextView
+                    android:id="@+id/tvGenres"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_regular"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@{movieDetails.genresList}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivCover"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <View
+                    android:id="@+id/vDivisor1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@color/backgroundColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGenres" />
+
+                <TextView
+                    android:id="@+id/tvOverviewTitle"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@string/overview"
+                    android:textColor="@color/shark"
+                    android:textSize="@dimen/sp_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vDivisor1"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <TextView
+                    android:id="@+id/tvOverviewContent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_regular"
+                    android:padding="@dimen/dp_5"
+                    android:text="@{movieDetails.overview}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOverviewTitle"
+                    tools:ignore="UnusedAttribute"
+                    tools:maxLines="2"
+                    tools:text="@tools:sample/lorem/random" />
+
+                <View
+                    android:id="@+id/vDivisor2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@color/backgroundColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOverviewContent" />
+
+                <TextView
+                    android:id="@+id/tvCreditsTitle"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@string/casts"
+                    android:textColor="@color/shark"
+                    android:textSize="@dimen/sp_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vDivisor2"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCredits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp_4"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCreditsTitle"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/fragment_movie_credit_item" />
+
+                <View
+                    android:id="@+id/vDivisor3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@color/backgroundColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvCredits" />
+
+                <TextView
+                    android:id="@+id/tvRecommendationsTitle"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@string/similar_movies"
+                    android:textColor="@color/shark"
+                    android:textSize="@dimen/sp_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vDivisor3"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRecommendations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp_4"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRecommendationsTitle"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/fragment_movie_recommendation_item" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.anibalbastias.coolmovies.library.base.ui.component.view.DotLoadingIndicatorView
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

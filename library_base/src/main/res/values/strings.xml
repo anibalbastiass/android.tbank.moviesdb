@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">library_base</string>
+    <string name="loading_new_items_text">Loading new items…</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/light_screen</color>
+    <color name="colorPrimaryDark">@color/light_screen_dark</color>
+    <color name="colorAccent">@color/light_screen_accent</color>
+
+    <color name="iconColor">@color/grey</color>
+    <color name="textColor">@color/white</color>
+    <color name="backgroundColor">@color/grey_background</color>
+</resources>

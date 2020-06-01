@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="data_not_found">Data not found</string>
+    <string name="itemDescription">Item Description</string>
+    <string name="toolbar_image">Toolbar Image</string>
+    <string name="overview">Overview</string>
+    <string name="casts">Casts</string>
+    <string name="similar_movies">Similar Movies</string>
+    <string name="error_connection_internet">Error connection. Try again</string>
+</resources>

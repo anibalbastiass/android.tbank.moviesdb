@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/featureMoviesNavGraph"
+        android:title="@string/movies"
+        android:icon="@drawable/ic_round_movie"/>
+
+    <!-- TODO: Disable visible false for next release -->
+    <item
+        android:id="@+id/featureTVSeriesNavGraph"
+        android:title="@string/tv_series"
+        android:visible="false"
+        android:icon="@drawable/ic_round_tv_series"/>
+    <item
+        android:id="@+id/featureFavouriteNavGraph"
+        android:title="@string/favorites"
+        android:visible="false"
+        android:icon="@drawable/ic_round_favorite"/>
+    <item
+        android:id="@+id/featureProfileNavGraph"
+        android:title="@string/profile"
+        android:visible="false"
+        android:icon="@drawable/ic_round_person"/>
+</menu>
