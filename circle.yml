@@ -53,12 +53,13 @@ jobs:
       - restore-gradle-cache
       - run: ./gradlew ktlintCheck
 
-  detekt:
-    <<: *container_config
-    steps:
-      - checkout
-      - restore-gradle-cache
-      - run: ./gradlew detekt
+# Uncomment for a future
+#  detekt:
+#    <<: *container_config
+#    steps:
+#      - checkout
+#      - restore-gradle-cache
+#      - run: ./gradlew detekt
 
   lint:
     <<: *container_config
@@ -97,9 +98,10 @@ workflows:
       - lint:
           requires:
             - update_dependency_cache
-      - detekt:
-          requires:
-            - update_dependency_cache
+# Uncomment for a future
+#      - detekt:
+#          requires:
+#            - update_dependency_cache
       - ktlint:
           requires:
             - update_dependency_cache
