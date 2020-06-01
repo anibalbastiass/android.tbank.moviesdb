@@ -4,4 +4,6 @@
     <string name="itemDescription">Item Description</string>
     <string name="toolbar_image">Toolbar Image</string>
     <string name="overview">Overview</string>
+    <string name="casts">Casts</string>
+    <string name="similar_movies">Similar Movies</string>
 </resources>

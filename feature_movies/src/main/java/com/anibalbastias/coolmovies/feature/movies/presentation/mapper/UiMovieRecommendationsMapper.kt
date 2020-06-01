@@ -5,6 +5,7 @@ import com.anibalbastias.coolmovies.feature.movies.domain.model.details.recommen
 import com.anibalbastias.coolmovies.feature.movies.domain.model.details.recommendations.DomainMovieRecommendationsResults
 import com.anibalbastias.coolmovies.feature.movies.presentation.model.details.recommendations.UiMovieRecommendations
 import com.anibalbastias.coolmovies.feature.movies.presentation.model.details.recommendations.UiMovieRecommendationsResults
+import com.anibalbastias.coolmovies.library.base.presentation.extension.formatDate
 
 class UiMovieRecommendationsMapper {
 
@@ -15,7 +16,7 @@ class UiMovieRecommendationsMapper {
         return UiMovieRecommendations(
             page = page,
             totalPages = totalPages,
-            results = results.map { it.fromDomainToUi() },
+            results = results.map { it.fromDomainToUi() } as MutableList<UiMovieRecommendationsResults>,
             totalResults = totalResults
         )
     }
@@ -29,12 +30,12 @@ class UiMovieRecommendationsMapper {
             title = title,
             genreIds = genreIds,
             posterPath = config.images.run {
-                "$secureBaseUrl${posterSizes.first().trim()}$posterPath"
+                "$secureBaseUrl${posterSizes.last().trim()}$posterPath"
             },
             backdropPath = config.images.run {
-                "$secureBaseUrl${backDropSizes.first().trim()}$backdropPath"
+                "$secureBaseUrl${backDropSizes.last().trim()}$backdropPath"
             },
-            releaseDate = releaseDate,
+            releaseDate = releaseDate.formatDate(),
             voteAverage = voteAverage,
             popularity = popularity,
             id = id,

@@ -20,4 +20,9 @@
     <dimen name="sp_18">18sp</dimen>
     <dimen name="dp_1">1dp</dimen>
     <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_90">90dp</dimen>
+    <dimen name="dp_170">170dp</dimen>
+    <dimen name="dp_180">180dp</dimen>
+    <dimen name="dp_130">130dp</dimen>
 </resources>

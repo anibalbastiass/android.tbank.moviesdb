@@ -27,8 +27,12 @@
         tools:layout="@layout/fragment_movie_detail">
 
         <argument
-            android:name="movieItem"
-            app:argType="com.anibalbastias.coolmovies.feature.movies.presentation.model.UiMovieItem" />
+            android:name="movieId"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/actionMovieDetailsToRecommendationDetails"
+            app:destination="@id/movieDetailFragment" />
 
     </fragment>
 

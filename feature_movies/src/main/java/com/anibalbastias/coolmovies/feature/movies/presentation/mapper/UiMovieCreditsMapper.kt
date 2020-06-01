@@ -16,9 +16,9 @@ class UiMovieCreditsMapper {
     fun DomainMovieCredits.fromDomainToUi(uiConfiguration: DomainConfiguration): UiMovieCredits {
         this@UiMovieCreditsMapper.config = uiConfiguration
         return UiMovieCredits(
-            cast = cast.map { it.fromDomainToUi() },
+            cast = cast.map { it.fromDomainToUi() } as MutableList<UiMovieCast>,
             id = id,
-            crew = crew.map { it.fromDomainToUi() }
+            crew = crew.map { it.fromDomainToUi() } as MutableList<UiMovieCrew>
         )
     }
 
@@ -29,7 +29,7 @@ class UiMovieCreditsMapper {
         creditId = creditId,
         name = name,
         profilePath = config.images.run {
-            "$secureBaseUrl${profileSizes.first().trim()}$profilePath"
+            "$secureBaseUrl${profileSizes.last().trim()}$profilePath"
         },
         id = id,
         order = order
@@ -40,7 +40,7 @@ class UiMovieCreditsMapper {
         creditId = creditId,
         name = name,
         profilePath = config.images.run {
-            "$secureBaseUrl${profileSizes.first().trim()}$profilePath"
+            "$secureBaseUrl${profileSizes.last().trim()}$profilePath"
         },
         id = id,
         department = department,

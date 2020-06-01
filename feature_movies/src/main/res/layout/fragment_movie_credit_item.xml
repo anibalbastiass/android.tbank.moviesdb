@@ -8,7 +8,7 @@
 
         <variable
             name="item"
-            type="com.anibalbastias.coolmovies.feature.movies.presentation.model.UiMovieItem" />
+            type="com.anibalbastias.coolmovies.feature.movies.presentation.model.details.credits.UiMovieCast" />
 
         <variable
             name="clickHandler"
@@ -18,10 +18,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvUserContainer"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_220"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_170"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_16"
         android:background="@color/white"
         android:clickable="true"
@@ -40,14 +41,14 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivUserImage"
                 android:layout_width="@dimen/dp_0"
-                android:layout_height="@dimen/dp_150"
+                android:layout_height="@dimen/dp_90"
                 android:contentDescription="@string/itemDescription"
                 android:scaleType="centerCrop"
                 android:transitionName="firstTransitionName"
                 bind:layout_constraintEnd_toEndOf="parent"
                 bind:layout_constraintStart_toStartOf="parent"
                 bind:layout_constraintTop_toTopOf="parent"
-                bind:setImageUrl="@{item.posterPath}"
+                bind:setImageUrl="@{item.profilePath}"
                 tools:ignore="UnusedAttribute"
                 tools:src="@tools:sample/avatars" />
 
@@ -60,7 +61,7 @@
                 android:fontFamily="@font/opensans_semibold"
                 android:maxLines="2"
                 android:padding="@dimen/dp_5"
-                android:text="@{item.title}"
+                android:text="@{item.name}"
                 android:textColor="@color/shark"
                 android:textSize="@dimen/sp_14"
                 bind:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +79,7 @@
                 android:fontFamily="@font/opensans_regular"
                 android:maxLines="1"
                 android:padding="@dimen/dp_5"
-                android:text="@{item.releaseDate}"
+                android:text="@{item.character}"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/sp_12"
                 bind:layout_constraintBottom_toBottomOf="parent"

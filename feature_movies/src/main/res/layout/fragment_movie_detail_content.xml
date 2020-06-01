@@ -29,7 +29,8 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
         android:background="@color/backgroundColor"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_20">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvUserContainer"
@@ -50,6 +51,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:minHeight="@dimen/dp_300"
                 android:orientation="vertical"
                 android:padding="@dimen/dp_8">
@@ -181,9 +183,9 @@
                     android:id="@+id/tvGenres"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
                     android:autoSizeTextType="uniform"
                     android:ellipsize="end"
-                    android:layout_marginTop="@dimen/dp_20"
                     android:fontFamily="@font/opensans_regular"
                     android:maxLines="2"
                     android:padding="@dimen/dp_5"
@@ -241,6 +243,84 @@
                     tools:ignore="UnusedAttribute"
                     tools:maxLines="2"
                     tools:text="@tools:sample/lorem/random" />
+
+                <View
+                    android:id="@+id/vDivisor2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@color/backgroundColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOverviewContent" />
+
+                <TextView
+                    android:id="@+id/tvCreditsTitle"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@string/casts"
+                    android:textColor="@color/shark"
+                    android:textSize="@dimen/sp_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vDivisor2"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCredits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp_4"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCreditsTitle"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/fragment_movie_credit_item" />
+
+                <View
+                    android:id="@+id/vDivisor3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@color/backgroundColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvCredits" />
+
+                <TextView
+                    android:id="@+id/tvRecommendationsTitle"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_5"
+                    android:text="@string/similar_movies"
+                    android:textColor="@color/shark"
+                    android:textSize="@dimen/sp_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vDivisor3"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="@tools:sample/first_names" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRecommendations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp_4"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRecommendationsTitle"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/fragment_movie_recommendation_item" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
