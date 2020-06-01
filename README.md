@@ -34,7 +34,7 @@ This project brings to table set of best practices, tools, and solutions:
 
 ## Tech-stack
 
-<img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
+<img src="misc/image/application_anim1.gif" width="336" align="right" hspace="20">
 
 Min API level is set to [`21`](https://android-arsenal.com/api?level=21), so the presented approach is suitable for over
 [85% of devices](https://developer.android.com/about/dashboards) running Android. This project takes advantage of many
