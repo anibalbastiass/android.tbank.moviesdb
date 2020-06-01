@@ -2,6 +2,7 @@ plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
+    kotlin(GradlePluginId.KAPT)
 }
 
 android {
@@ -34,6 +35,10 @@ android {
     testOptions {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
     }
+}
+
+kapt {
+    generateStubs = true
 }
 
 dependencies {

@@ -18,6 +18,8 @@ object GradlePluginId {
     const val KOTLIN_ANDROID_EXTENSIONS = "org.jetbrains.kotlin.android.extensions"
     const val GRADLE_VERSION_PLUGIN = "com.github.ben-manes.versions"
     const val SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
+    const val KOTLIN_KAPT = "kotlin-kapt"
+    const val KAPT = "kapt"
 }
 
 object GradleOldWayPlugins {

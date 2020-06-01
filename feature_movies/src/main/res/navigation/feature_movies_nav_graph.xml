@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:moduleName="feature_movies"
+    app:startDestination="@id/albumListFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/albumListFragment"
+        android:name="com.anibalbastias.coolmovies.feature.movies.ui.list.MovieListFragment"
+        android:label="AlbumListFragment"
+        app:moduleName="feature_movies"
+        tools:layout="@layout/fragment_movie_list">
+
+        <action
+            android:id="@+id/actionAlbumListToAlbumDetail"
+            app:destination="@id/albumDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.anibalbastias.coolmovies.feature.movies.ui.detail.MovieDetailFragment"
+        android:label="AlbumDetailFragment"
+        app:moduleName="feature_movies"
+        tools:layout="@layout/fragment_album_detail">
+
+        <argument
+            android:name="artistName"
+            app:argType="string" />
+
+        <argument
+            android:name="albumName"
+            app:argType="string" />
+
+        <argument
+            android:name="mbId"
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+</navigation>
