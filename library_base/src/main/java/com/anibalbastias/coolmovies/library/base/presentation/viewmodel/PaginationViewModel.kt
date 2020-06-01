@@ -9,9 +9,10 @@ import java.util.concurrent.atomic.AtomicBoolean
 open class PaginationViewModel<T> : ViewModel() {
 
     var pageSize: Int = 0
+    var firstPage: Int = 1
     var itemPosition = ObservableInt(0)
     var lastPosition = ObservableInt(0)
-    var offset = ObservableInt(0)
+    var offset = ObservableInt(firstPage)
 
     var isLoading = ObservableBoolean(false)
     var isError = ObservableBoolean(false)
@@ -21,8 +22,8 @@ open class PaginationViewModel<T> : ViewModel() {
     var pagedList: ArrayList<T>? = arrayListOf()
 
     private fun addMoreItemsInProgressData(newList: ArrayList<T>) {
-        val isFirstPageLoad = offset.get() == 0
-        offset.set(newList.size)
+        val isFirstPageLoad = offset.get() == firstPage
+        offset.set(offset.get() + 1)
 
         if (!isFirstPageLoad) {
             //Pagination Loaded
@@ -60,10 +61,10 @@ open class PaginationViewModel<T> : ViewModel() {
 
             // Update Next Identifier for pagination
             if (items.isNotEmpty()) {
-                offset.set(items.size)
+                offset.set(offset.get() + 1)
                 lastPosition.set(items.size)
             } else {
-                offset.set(0)
+                offset.set(firstPage)
             }
 
         } else {

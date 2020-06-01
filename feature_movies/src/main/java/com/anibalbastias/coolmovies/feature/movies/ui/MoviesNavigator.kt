@@ -2,8 +2,8 @@ package com.anibalbastias.coolmovies.feature.movies.ui
 
 import com.anibalbastias.coolmovies.feature.movies.presentation.model.UiMovieItem
 import com.anibalbastias.coolmovies.feature.movies.presentation.model.details.recommendations.UiMovieRecommendationsResults
-import com.anibalbastias.coolmovies.feature.movies.ui.detail.MovieDetailFragmentDirections
-import com.anibalbastias.coolmovies.feature.movies.ui.list.MovieListFragmentDirections
+import com.anibalbastias.coolmovies.feature.movies.presentation.detail.MovieDetailFragmentDirections
+import com.anibalbastias.coolmovies.feature.movies.presentation.list.MovieListFragmentDirections
 import com.anibalbastias.coolmovies.library.base.presentation.navigation.NavManager
 
 class MoviesNavigator(private val navManager: NavManager) {

@@ -1,4 +1,4 @@
-package com.anibalbastias.coolmovies.feature.movies.ui.detail
+package com.anibalbastias.coolmovies.feature.movies.presentation.detail
 
 import android.os.Bundle
 import android.view.View
@@ -13,8 +13,8 @@ import com.anibalbastias.coolmovies.feature.movies.presentation.model.details.re
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewmodel.MovieDetailViewModel
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewstate.MovieDetailsViewState
 import com.anibalbastias.coolmovies.feature.movies.ui.MoviesNavigator
-import com.anibalbastias.coolmovies.feature.movies.ui.detail.adapter.CreditAdapter
-import com.anibalbastias.coolmovies.feature.movies.ui.detail.adapter.RecommendationAdapter
+import com.anibalbastias.coolmovies.feature.movies.presentation.detail.adapter.CreditAdapter
+import com.anibalbastias.coolmovies.feature.movies.presentation.detail.adapter.RecommendationAdapter
 import com.anibalbastias.coolmovies.library.base.presentation.extension.observe
 import com.anibalbastias.coolmovies.library.base.presentation.fragment.BaseContainerFragment
 import com.anibalbastias.coolmovies.library.base.ui.adapter.base.BaseBindClickHandler
@@ -22,6 +22,7 @@ import com.anibalbastias.coolmovies.library.base.ui.extension.applyFontForToolba
 import com.anibalbastias.coolmovies.library.base.ui.extension.runLayoutAnimation
 import com.anibalbastias.coolmovies.library.base.ui.extension.setArrowUpToolbar
 import com.pawegio.kandroid.visible
+import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.fragment_movie_detail_content.*
 import org.kodein.di.generic.instance
 
@@ -61,8 +62,9 @@ internal class MovieDetailFragment : BaseContainerFragment() {
         binding = DataBindingUtil.bind<ViewDataBinding>(view) as FragmentMovieDetailBinding
         binding.lifecycleOwner = this
 
-        viewModel.movieId = "${args.movieId}"
+        viewModel.movieId = args.movieId
         observe(viewModel.stateLiveData, stateObserver)
+
         viewModel.loadData()
 
         initToolbar()
@@ -97,5 +99,8 @@ internal class MovieDetailFragment : BaseContainerFragment() {
                 activity?.onBackPressed()
             }
         }
+
+        // TODO: Disable for next release
+        ivFavorite.visible = false
     }
 }
