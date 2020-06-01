@@ -30,6 +30,10 @@ android {
         buildConfigField("FEATURE_MODULE_NAMES", getDynamicFeatureModuleNames())
     }
 
+    lintOptions {
+        isAbortOnError = false
+    }
+
     buildTypes {
         getByName(BuildType.RELEASE) {
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
