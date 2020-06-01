@@ -1,4 +1,4 @@
-package com.anibalbastias.coolmovies.feature.movies.data.model.movie
+package com.anibalbastias.coolmovies.feature.movies.data.model.list
 
 import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.ADULT
 import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.BACKDROP_PATH

@@ -1,8 +1,8 @@
 package com.anibalbastias.coolmovies.feature.movies.domain.mapper
 
 import com.anibalbastias.coolmovies.feature.movies.data.room.Constants.TABLE_CONFIGURATION
-import com.anibalbastias.coolmovies.feature.movies.domain.model.DomainConfiguration
-import com.anibalbastias.coolmovies.feature.movies.domain.model.DomainConfigurationImages
+import com.anibalbastias.coolmovies.feature.movies.domain.model.configuration.DomainConfiguration
+import com.anibalbastias.coolmovies.feature.movies.domain.model.configuration.DomainConfigurationImages
 import com.anibalbastias.coolmovies.feature.movies.domain.model.database.EntityConfiguration
 
 class BdConfigurationMapper {
@@ -11,10 +11,11 @@ class BdConfigurationMapper {
         const val COMMA = ","
     }
 
-    fun EntityConfiguration.fromDatabaseToDomain() = DomainConfiguration(
-        images = makeDomainConfigurationImages(this),
-        changeKeys = arrayListOf() //changeKeys
-    )
+    fun EntityConfiguration.fromDatabaseToDomain() =
+        DomainConfiguration(
+            images = makeDomainConfigurationImages(this),
+            changeKeys = arrayListOf() //changeKeys
+        )
 
     private fun makeDomainConfigurationImages(entity: EntityConfiguration) = entity.run {
         DomainConfigurationImages(

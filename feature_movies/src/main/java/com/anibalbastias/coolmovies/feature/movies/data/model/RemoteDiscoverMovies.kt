@@ -1,6 +1,6 @@
 package com.anibalbastias.coolmovies.feature.movies.data.model
 
-import com.anibalbastias.coolmovies.feature.movies.data.model.movie.RemoteMovieItem
+import com.anibalbastias.coolmovies.feature.movies.data.model.list.RemoteMovieItem
 import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.PAGE
 import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.RESULTS
 import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.TOTAL_PAGES

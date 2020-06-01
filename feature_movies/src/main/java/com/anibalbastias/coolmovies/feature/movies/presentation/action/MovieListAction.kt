@@ -1,6 +1,6 @@
 package com.anibalbastias.coolmovies.feature.movies.presentation.action
 
-import com.anibalbastias.coolmovies.feature.movies.domain.model.DomainMovieItem
+import com.anibalbastias.coolmovies.feature.movies.domain.model.list.DomainMovieItem
 import com.anibalbastias.coolmovies.library.base.presentation.viewmodel.BaseAction
 
 sealed class MovieListAction : BaseAction {

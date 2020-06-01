@@ -12,4 +12,17 @@
     <dimen name="dp_5">5dp</dimen>
     <dimen name="dp_45">45dp</dimen>
     <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_72">72dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
+    <dimen name="dp_300">300dp</dimen>
+    <dimen name="sp_26">26sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_90">90dp</dimen>
+    <dimen name="dp_170">170dp</dimen>
+    <dimen name="dp_180">180dp</dimen>
+    <dimen name="dp_130">130dp</dimen>
 </resources>

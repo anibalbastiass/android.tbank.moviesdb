@@ -1,6 +1,6 @@
 package com.anibalbastias.coolmovies.feature.movies.domain.usecase
 
-import com.anibalbastias.coolmovies.feature.movies.domain.model.DomainConfiguration
+import com.anibalbastias.coolmovies.feature.movies.domain.model.configuration.DomainConfiguration
 import com.anibalbastias.coolmovies.feature.movies.domain.repository.MoviesRepository
 
 internal class GetConfigurationUseCase(

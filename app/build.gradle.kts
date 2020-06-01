@@ -24,17 +24,10 @@ android {
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
 
         buildConfigFieldFromGradleProperty("apiBaseUrl")
+        buildConfigFieldFromGradleProperty("youtubeUrl")
         buildConfigFieldFromGradleProperty("apiToken")
 
         buildConfigField("FEATURE_MODULE_NAMES", getDynamicFeatureModuleNames())
-
-        kapt {
-            arguments {
-                arg("room.schemaLocation", "$projectDir/schemas".toString())
-                arg("room.incremental", "true")
-                arg("room.expandProjection", "true")
-            }
-        }
     }
 
     buildTypes {
@@ -82,7 +75,6 @@ android {
         isExperimental = true
     }
 
-
     // APK Release name
     setProperty("archivesBaseName", "coolMoviesApp-v${AndroidConfig.VERSION_NAME}")
 }
@@ -114,8 +106,8 @@ dependencies {
     api(LibraryDependency.ROOM_RUNTIME)
     api(LibraryDependency.ROOM_KTX)
     kapt(LibraryDependency.ROOM_COMPILER)
-
 }
+
 repositories {
     google()
 }
@@ -132,10 +124,13 @@ fun getDynamicFeatureModuleNames() = ModuleDependency.getDynamicFeatureModules()
     .map { it.replace(":feature_", "") }
     .toSet()
 
-fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.toLowerCase() }
+fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") {
+    it.toLowerCase()
+}
 
 fun DefaultConfig.buildConfigField(name: String, value: Set<String>) {
     // Generates String that holds Java String Array code
-    val strValue = value.joinToString(prefix = "{", separator = ",", postfix = "}", transform = { "\"$it\"" })
+    val strValue = value.joinToString(
+        prefix = "{", separator = ",", postfix = "}", transform = { "\"$it\"" })
     buildConfigField("String[]", name, strValue)
 }

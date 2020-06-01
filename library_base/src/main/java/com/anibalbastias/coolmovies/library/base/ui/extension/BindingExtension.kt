@@ -1,5 +1,6 @@
 package com.anibalbastias.coolmovies.library.base.ui.extension
 
+import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import coil.api.load
@@ -8,6 +9,17 @@ import com.anibalbastias.coolmovies.library.base.R
 
 @BindingAdapter("setImageUrl")
 fun AppCompatImageView.setImageUrl(imageUrl: String?) {
+    imageUrl?.let { image ->
+        load(image) {
+            crossfade(true)
+            error(R.drawable.ic_placeholder)
+            transformations(RoundedCornersTransformation(10F))
+        }
+    }
+}
+
+@BindingAdapter("setImageUrl")
+fun ImageView.setImageUrl(imageUrl: String?) {
     imageUrl?.let { image ->
         load(image) {
             crossfade(true)

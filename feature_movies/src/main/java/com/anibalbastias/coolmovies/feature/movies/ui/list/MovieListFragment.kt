@@ -16,6 +16,7 @@ import com.anibalbastias.coolmovies.feature.movies.ui.MoviesNavigator
 import com.anibalbastias.coolmovies.feature.movies.ui.list.adapter.MovieAdapter
 import com.anibalbastias.coolmovies.library.base.presentation.extension.observe
 import com.anibalbastias.coolmovies.library.base.presentation.fragment.BaseContainerFragment
+import com.anibalbastias.coolmovies.library.base.presentation.viewmodel.PaginationViewModel
 import com.anibalbastias.coolmovies.library.base.ui.adapter.base.BaseBindClickHandler
 import com.anibalbastias.coolmovies.library.base.ui.extension.applyFontForToolbarTitle
 import com.anibalbastias.coolmovies.library.base.ui.extension.initSwipe
@@ -29,6 +30,7 @@ class MovieListFragment : BaseContainerFragment() {
 
     override val layoutResourceId = R.layout.fragment_movie_list
     private val viewModel: MovieListViewModel by instance()
+    private val paginationViewModel: PaginationViewModel<UiMovieItem> by instance()
     private val movieAdapter: MovieAdapter by instance()
     private val movieNavigator: MoviesNavigator by instance()
 

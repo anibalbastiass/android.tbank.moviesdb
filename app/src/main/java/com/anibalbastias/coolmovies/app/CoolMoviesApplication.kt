@@ -13,7 +13,6 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
 import timber.log.Timber
 
-
 class CoolMoviesApplication : SplitCompatApplication(), KodeinAware {
 
     companion object {

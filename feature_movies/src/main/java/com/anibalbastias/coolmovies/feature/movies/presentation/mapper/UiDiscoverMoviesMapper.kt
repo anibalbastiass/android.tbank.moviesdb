@@ -1,7 +1,7 @@
 package com.anibalbastias.coolmovies.feature.movies.presentation.mapper
 
-import com.anibalbastias.coolmovies.feature.movies.domain.model.DomainConfiguration
-import com.anibalbastias.coolmovies.feature.movies.domain.model.DomainMovieItem
+import com.anibalbastias.coolmovies.feature.movies.domain.model.configuration.DomainConfiguration
+import com.anibalbastias.coolmovies.feature.movies.domain.model.list.DomainMovieItem
 import com.anibalbastias.coolmovies.feature.movies.presentation.model.UiMovieItem
 import com.anibalbastias.coolmovies.library.base.presentation.extension.formatDate
 
