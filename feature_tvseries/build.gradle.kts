@@ -42,6 +42,10 @@ android {
         isEnabled = true
     }
 
+    lintOptions {
+        isAbortOnError = false
+    }
+
     androidExtensions {
         isExperimental = true
     }

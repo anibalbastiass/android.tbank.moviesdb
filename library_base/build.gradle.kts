@@ -37,6 +37,10 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
+    lintOptions {
+        isAbortOnError = false
+    }
+
     dataBinding {
         isEnabled = true
     }
