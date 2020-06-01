@@ -46,12 +46,13 @@ jobs:
           command: ./gradlew androidDependencies
       - save-gradle-cache
 
-  ktlint:
-    <<: *container_config
-    steps:
-      - checkout
-      - restore-gradle-cache
-      - run: ./gradlew ktlintCheck
+# Uncomment for a future
+#  ktlint:
+#    <<: *container_config
+#    steps:
+#      - checkout
+#      - restore-gradle-cache
+#      - run: ./gradlew ktlintCheck
 
 # Uncomment for a future
 #  detekt:
@@ -102,9 +103,9 @@ workflows:
 #      - detekt:
 #          requires:
 #            - update_dependency_cache
-      - ktlint:
-          requires:
-            - update_dependency_cache
+#      - ktlint:
+#          requires:
+#            - update_dependency_cache
       - unit_test:
           requires:
             - update_dependency_cache
@@ -112,5 +113,5 @@ workflows:
           requires:
             - lint
 #            - detekt
-            - ktlint
+#            - ktlint
             - unit_test
