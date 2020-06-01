@@ -3,8 +3,7 @@ package com.anibalbastias.coolmovies.feature.movies.data
 import androidx.room.Room
 import com.anibalbastias.coolmovies.app.CoolMoviesApplication
 import com.anibalbastias.coolmovies.feature.movies.MODULE_NAME
-import com.anibalbastias.coolmovies.feature.movies.data.mapper.ConfigurationMapper
-import com.anibalbastias.coolmovies.feature.movies.data.mapper.DiscoverMoviesMapper
+import com.anibalbastias.coolmovies.feature.movies.data.mapper.*
 import com.anibalbastias.coolmovies.feature.movies.data.repository.RemoteRepositoryImpl
 import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.MoviesRetrofitService
 import com.anibalbastias.coolmovies.feature.movies.data.room.Constants
@@ -31,6 +30,9 @@ internal val dataModule = Kodein.Module("${MODULE_NAME}DataModule") {
             instance(),
             instance(),
             instance(),
+            instance(),
+            instance(),
+            instance(),
             instance()
         )
     }
@@ -40,5 +42,11 @@ internal val dataModule = Kodein.Module("${MODULE_NAME}DataModule") {
     bind() from singleton { ConfigurationMapper() }
 
     bind() from singleton { DiscoverMoviesMapper() }
+
+    bind() from singleton { MovieDetailsMapper() }
+
+    bind() from singleton { MovieCreditsMapper() }
+
+    bind() from singleton { MovieRecommendationsMapper() }
 
 }

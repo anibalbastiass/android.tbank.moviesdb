@@ -1,4 +1,4 @@
-package com.anibalbastias.coolmovies.feature.movies.domain.model
+package com.anibalbastias.coolmovies.feature.movies.domain.model.list
 
 data class DomainMovieItem(
     val popularity: Double,

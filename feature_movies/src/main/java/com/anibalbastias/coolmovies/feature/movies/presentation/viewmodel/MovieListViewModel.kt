@@ -1,7 +1,7 @@
 package com.anibalbastias.coolmovies.feature.movies.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
-import com.anibalbastias.coolmovies.feature.movies.domain.model.DomainConfiguration
+import com.anibalbastias.coolmovies.feature.movies.domain.model.configuration.DomainConfiguration
 import com.anibalbastias.coolmovies.feature.movies.domain.usecase.GetConfigurationUseCase
 import com.anibalbastias.coolmovies.feature.movies.domain.usecase.GetDiscoverMoviesUseCase
 import com.anibalbastias.coolmovies.feature.movies.presentation.action.MovieListAction

@@ -2,7 +2,7 @@ package com.anibalbastias.coolmovies.feature.movies.domain.database
 
 import com.anibalbastias.coolmovies.feature.movies.data.room.MoviesDatabase
 import com.anibalbastias.coolmovies.feature.movies.domain.mapper.BdConfigurationMapper
-import com.anibalbastias.coolmovies.feature.movies.domain.model.DomainConfiguration
+import com.anibalbastias.coolmovies.feature.movies.domain.model.configuration.DomainConfiguration
 import com.anibalbastias.coolmovies.feature.movies.domain.repository.DatabaseRepository
 
 open class DatabaseRepositoryImpl(
