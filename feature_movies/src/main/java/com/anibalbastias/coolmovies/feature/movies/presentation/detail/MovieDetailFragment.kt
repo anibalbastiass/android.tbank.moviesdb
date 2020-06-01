@@ -1,4 +1,4 @@
-package com.anibalbastias.coolmovies.feature.movies.ui.detail
+package com.anibalbastias.coolmovies.feature.movies.presentation.detail
 
 import android.os.Bundle
 import android.view.View
@@ -13,8 +13,8 @@ import com.anibalbastias.coolmovies.feature.movies.presentation.model.details.re
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewmodel.MovieDetailViewModel
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewstate.MovieDetailsViewState
 import com.anibalbastias.coolmovies.feature.movies.ui.MoviesNavigator
-import com.anibalbastias.coolmovies.feature.movies.ui.detail.adapter.CreditAdapter
-import com.anibalbastias.coolmovies.feature.movies.ui.detail.adapter.RecommendationAdapter
+import com.anibalbastias.coolmovies.feature.movies.presentation.detail.adapter.CreditAdapter
+import com.anibalbastias.coolmovies.feature.movies.presentation.detail.adapter.RecommendationAdapter
 import com.anibalbastias.coolmovies.library.base.presentation.extension.observe
 import com.anibalbastias.coolmovies.library.base.presentation.fragment.BaseContainerFragment
 import com.anibalbastias.coolmovies.library.base.ui.adapter.base.BaseBindClickHandler

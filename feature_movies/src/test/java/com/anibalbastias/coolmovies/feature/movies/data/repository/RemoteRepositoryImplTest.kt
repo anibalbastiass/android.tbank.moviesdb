@@ -1,14 +1,20 @@
 package com.anibalbastias.coolmovies.feature.movies.data.repository
 
-import com.anibalbastias.coolmovies.feature.movies.data.DataFixtures
-import com.anibalbastias.coolmovies.feature.movies.data.model.toDomainModel
-import com.anibalbastias.coolmovies.feature.movies.data.retrofit.response.GetAlbumInfoResponse
-import com.anibalbastias.coolmovies.feature.movies.data.retrofit.response.SearchAlbumResponse
+import com.anibalbastias.coolmovies.feature.movies.data.mapper.*
 import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.MoviesRetrofitService
+import com.anibalbastias.coolmovies.feature.movies.domain.repository.DatabaseRepository
+import com.anibalbastias.coolmovies.feature.movies.factory.ConfigurationFactory
+import com.anibalbastias.coolmovies.feature.movies.factory.MoviesDetailsFactory
+import com.anibalbastias.coolmovies.feature.movies.factory.MoviesListFactory
+import com.anibalbastias.coolmovies.library.testutils.foundation.RandomFactory
+import com.anibalbastias.coolmovies.library.testutils.foundation.RandomFactory.generateHashMapString
+import com.anibalbastias.coolmovies.library.testutils.foundation.RandomFactory.generateInt
+import com.anibalbastias.coolmovies.library.testutils.foundation.RandomFactory.generateString
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 
@@ -17,60 +23,59 @@ class RemoteRepositoryImplTest {
     @MockK
     internal lateinit var mockService: MoviesRetrofitService
 
-    private lateinit var cut: RemoteRepositoryImpl
+    @MockK
+    internal lateinit var configurationMapper: ConfigurationMapper
 
-    private val artistName = "artistName"
-    private val albumName = "albumName"
+    @MockK
+    internal lateinit var discoverMoviesMapper: DiscoverMoviesMapper
+
+    @MockK
+    internal lateinit var movieDetailsMapper: MovieDetailsMapper
+
+    @MockK
+    internal lateinit var movieCreditsMapper: MovieCreditsMapper
+
+    @MockK
+    internal lateinit var movieRecommendationsMapper: MovieRecommendationsMapper
+
+    @MockK
+    internal lateinit var databaseRepository: DatabaseRepository
+
+    private lateinit var cut: RemoteRepositoryImpl
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
 
-        cut = RemoteRepositoryImpl(mockService)
-    }
-
-    @Test
-    fun `getAlbumInfo fetches AlbumInfo and maps to Model`() {
-        // given
-        coEvery {
-            mockService.getAlbumInfoAsync(artistName, albumName, null)
-        } returns GetAlbumInfoResponse(DataFixtures.getAlbum().copy())
-
-        // when
-        val result = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
-
-        // then
-        result shouldBeEqualTo DataFixtures.getAlbum().toDomainModel()
-    }
-
-    @Test
-    fun `getAlbumInfo returns null if response is null`() {
-        // given
-        coEvery {
-            mockService.getAlbumInfoAsync(artistName, albumName, null)
-        } returns null
-
-        // when
-        val result = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
-
-        // then
-        result shouldBeEqualTo null
-    }
-
-    @Test
-    fun `searchAlbum fetches AlbumInfo and maps to Model`() {
-        // given
-        val phrase = "phrase"
-        coEvery { mockService.searchAlbumAsync(phrase) } returns SearchAlbumResponse(
-            AlbumSearchResultDataModel(
-                AlbumListDataModel(listOf(DataFixtures.getAlbum()))
-            )
+        cut = RemoteRepositoryImpl(
+            mockService, configurationMapper, discoverMoviesMapper, movieDetailsMapper,
+            movieCreditsMapper, movieRecommendationsMapper, databaseRepository
         )
+    }
 
-        // when
-        val result = runBlocking { cut.searchAlbum(phrase) }
+    @Test
+    fun `getConfiguration fetches RemoteConfiguration and maps to RemoteModel`() {
+        // given
+        coEvery {
+            mockService.getConfigurationAsync()
+        } returns ConfigurationFactory.makeRemoteConfiguration()
+    }
 
-        // then
-        result shouldBeEqualTo listOf(DataFixtures.getAlbum().toDomainModel())
+    @Test
+    fun `getConfiguration returns null if response is null`() {
+        // given
+        coEvery {
+            mockService.getConfigurationAsync()
+        } returns null
+    }
+
+    @Test
+    fun `discoverMovies fetches RemoteDiscoverMovies and maps to RemoteModel`() {
+        // given
+        val map = generateHashMapString()
+        val page = generateInt()
+        coEvery {
+            mockService.discoverMoviesAsync(map)
+        } returns MoviesListFactory.makeRemoteDiscoverMovies()
     }
 }

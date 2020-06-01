@@ -1,4 +1,4 @@
-package com.anibalbastias.coolmovies.feature.movies.ui.detail.adapter
+package com.anibalbastias.coolmovies.feature.movies.presentation.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,15 +6,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.anibalbastias.coolmovies.feature.movies.R
-import com.anibalbastias.coolmovies.feature.movies.presentation.model.details.credits.UiMovieCast
+import com.anibalbastias.coolmovies.feature.movies.presentation.model.details.recommendations.UiMovieRecommendationsResults
 import com.anibalbastias.coolmovies.library.base.ui.adapter.base.BaseBindClickHandler
 import com.anibalbastias.coolmovies.library.base.ui.adapter.base.BaseBindViewHolder
 import com.anibalbastias.coolmovies.library.base.ui.adapter.customBase.BaseAdapter
 
-internal class CreditAdapter : BaseAdapter<UiMovieCast>() {
+internal class RecommendationAdapter : BaseAdapter<UiMovieRecommendationsResults>() {
 
-    override var items: MutableList<UiMovieCast?> = arrayListOf()
-    override var clickHandler: BaseBindClickHandler<UiMovieCast>? = null
+    override var items: MutableList<UiMovieRecommendationsResults?> = arrayListOf()
+    override var clickHandler: BaseBindClickHandler<UiMovieRecommendationsResults>? = null
 
     //region Unused methods
     override fun createHeaderViewHolder(parent: ViewGroup): RecyclerView.ViewHolder? = null
@@ -26,9 +26,9 @@ internal class CreditAdapter : BaseAdapter<UiMovieCast>() {
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
         val binding: ViewDataBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_movie_credit_item, parent, false
+            R.layout.fragment_movie_recommendation_item, parent, false
         )
-        return BaseBindViewHolder<UiMovieCast>(binding)
+        return BaseBindViewHolder<UiMovieRecommendationsResults>(binding)
     }
 
     override fun createLoadingViewHolder(parent: ViewGroup): RecyclerView.ViewHolder? {
@@ -39,7 +39,7 @@ internal class CreditAdapter : BaseAdapter<UiMovieCast>() {
     }
 
     override fun bindItemViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
-        val holder = viewHolder as BaseBindViewHolder<UiMovieCast>
+        val holder = viewHolder as BaseBindViewHolder<UiMovieRecommendationsResults>
         items[position]?.let {
             holder.bind(it, clickHandler)
         }
@@ -54,6 +54,6 @@ internal class CreditAdapter : BaseAdapter<UiMovieCast>() {
 
     override fun addLoadingFooter() {
         isLoadingAdded = true
-        add(UiMovieCast.create())
+        add(UiMovieRecommendationsResults.create())
     }
 }

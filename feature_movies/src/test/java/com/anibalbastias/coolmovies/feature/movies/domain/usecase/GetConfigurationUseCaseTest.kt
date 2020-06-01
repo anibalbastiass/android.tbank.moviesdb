@@ -1,45 +1,42 @@
 package com.anibalbastias.coolmovies.feature.movies.domain.usecase
 
 import com.anibalbastias.coolmovies.feature.movies.data.repository.RemoteRepositoryImpl
+import com.anibalbastias.coolmovies.feature.movies.factory.ConfigurationFactory
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
-import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
-class GetAlbumUseCaseTest {
+class GetConfigurationUseCaseTest {
 
     @MockK
     internal lateinit var mockRemoteRepository: RemoteRepositoryImpl
 
-    private lateinit var cut: GetAlbumUseCase
+    private lateinit var cut: GetConfigurationUseCase
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
 
-        cut = GetAlbumUseCase(mockRemoteRepository)
+        cut = GetConfigurationUseCase(mockRemoteRepository)
     }
 
     @Test
-    fun `when execute then getAlbum`() {
+    fun `return configuration`() {
         // given
-        val albumName = "albumName"
-        val artistName = "artistName"
-        val mbId = "123"
-
-        coEvery { mockRemoteRepository.getAlbumInfo(artistName, albumName, mbId) } answers { mockk() }
+        val configuration = ConfigurationFactory.makeDomainConfiguration()
+        coEvery { mockRemoteRepository.getConfiguration() } returns configuration
 
         // when
-        runBlocking { cut.execute(artistName, albumName, mbId) }
+        val result = runBlocking { cut.execute() }
 
         // then
-        coVerify { mockRemoteRepository.getAlbumInfo(artistName, albumName, mbId) }
+        result shouldBeEqualTo configuration
     }
 }

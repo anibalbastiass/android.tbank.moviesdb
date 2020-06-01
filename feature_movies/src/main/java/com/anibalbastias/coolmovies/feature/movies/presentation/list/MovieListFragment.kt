@@ -1,4 +1,4 @@
-package com.anibalbastias.coolmovies.feature.movies.ui.list
+package com.anibalbastias.coolmovies.feature.movies.presentation.list
 
 import android.os.Bundle
 import android.view.View
@@ -12,7 +12,7 @@ import com.anibalbastias.coolmovies.feature.movies.presentation.model.UiMovieIte
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewmodel.MovieListViewModel
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewstate.MovieListViewState
 import com.anibalbastias.coolmovies.feature.movies.ui.MoviesNavigator
-import com.anibalbastias.coolmovies.feature.movies.ui.list.adapter.MovieAdapter
+import com.anibalbastias.coolmovies.feature.movies.presentation.list.adapter.MovieAdapter
 import com.anibalbastias.coolmovies.library.base.presentation.extension.observe
 import com.anibalbastias.coolmovies.library.base.presentation.fragment.BaseContainerFragment
 import com.anibalbastias.coolmovies.library.base.presentation.viewmodel.PaginationViewModel
