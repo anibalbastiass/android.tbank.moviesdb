@@ -62,14 +62,15 @@ jobs:
 #      - restore-gradle-cache
 #      - run: ./gradlew detekt
 
-  lint:
-    <<: *container_config
-    steps:
-      - checkout
-      - restore-gradle-cache
-      # pure "lint" gradle task should be avoided because it is parent task for lintDebug and lintRelease (it runs lint
-      # multiple times for each build variant). We want to run "lintDebug" task, because it's faster.
-      - run: ./gradlew lintDebug
+# Uncomment for a future
+#  lint:
+#    <<: *container_config
+#    steps:
+#      - checkout
+#      - restore-gradle-cache
+#      # pure "lint" gradle task should be avoided because it is parent task for lintDebug and lintRelease (it runs lint
+#      # multiple times for each build variant). We want to run "lintDebug" task, because it's faster.
+#      - run: ./gradlew lintDebug
 
   unit_test:
     <<: *container_config
@@ -96,9 +97,9 @@ workflows:
   check:
     jobs:
       - update_dependency_cache
-      - lint:
-          requires:
-            - update_dependency_cache
+#      - lint:
+#          requires:
+#            - update_dependency_cache
 # Uncomment for a future
 #      - detekt:
 #          requires:
@@ -111,7 +112,7 @@ workflows:
             - update_dependency_cache
       - build_app:
           requires:
-            - lint
+#            - lint
 #            - detekt
 #            - ktlint
             - unit_test
