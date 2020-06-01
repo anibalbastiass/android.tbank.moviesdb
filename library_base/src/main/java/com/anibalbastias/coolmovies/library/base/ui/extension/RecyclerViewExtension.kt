@@ -42,7 +42,7 @@ fun RecyclerView.paginationForRecyclerScroll(
 
                     if (lastPosition.get() >= pageSize) {
                         isLoadingMorePages.set(true)
-                        offset.set(offset.get() + pageSize)
+                        offset.set(offset.get() + 1)
                         bodyLoadMore?.invoke()
                     }
                 }

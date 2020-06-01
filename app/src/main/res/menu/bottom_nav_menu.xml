@@ -4,6 +4,8 @@
         android:id="@+id/featureMoviesNavGraph"
         android:title="@string/movies"
         android:icon="@drawable/ic_round_movie"/>
+
+    <!-- TODO: Disable visible false for next release -->
     <item
         android:id="@+id/featureTVSeriesNavGraph"
         android:title="@string/tv_series"

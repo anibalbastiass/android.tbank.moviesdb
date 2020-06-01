@@ -22,6 +22,7 @@ import com.anibalbastias.coolmovies.library.base.ui.extension.applyFontForToolba
 import com.anibalbastias.coolmovies.library.base.ui.extension.runLayoutAnimation
 import com.anibalbastias.coolmovies.library.base.ui.extension.setArrowUpToolbar
 import com.pawegio.kandroid.visible
+import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.fragment_movie_detail_content.*
 import org.kodein.di.generic.instance
 
@@ -61,7 +62,7 @@ internal class MovieDetailFragment : BaseContainerFragment() {
         binding = DataBindingUtil.bind<ViewDataBinding>(view) as FragmentMovieDetailBinding
         binding.lifecycleOwner = this
 
-        viewModel.movieId = "${args.movieId}"
+        viewModel.movieId = args.movieId
         observe(viewModel.stateLiveData, stateObserver)
         viewModel.loadData()
 
@@ -97,5 +98,8 @@ internal class MovieDetailFragment : BaseContainerFragment() {
                 activity?.onBackPressed()
             }
         }
+
+        // TODO: Disable for next release
+        ivFavorite.visible = false
     }
 }
