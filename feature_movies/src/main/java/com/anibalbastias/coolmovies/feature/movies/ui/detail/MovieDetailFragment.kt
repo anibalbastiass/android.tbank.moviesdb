@@ -64,6 +64,7 @@ internal class MovieDetailFragment : BaseContainerFragment() {
 
         viewModel.movieId = args.movieId
         observe(viewModel.stateLiveData, stateObserver)
+
         viewModel.loadData()
 
         initToolbar()

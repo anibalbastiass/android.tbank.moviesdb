@@ -68,7 +68,12 @@ class MovieListFragment : BaseContainerFragment() {
         }
 
         observe(viewModel.stateLiveData, stateObserver)
-        viewModel.loadData()
+
+        viewModel.stateLiveData.value?.movies?.let {
+            progressBar.visible = false
+            errorAnimation.visible = false
+            setPagination(it)
+        } ?: viewModel.loadData()
 
         srlMovies.initSwipe {
             paginationViewModel.run {
