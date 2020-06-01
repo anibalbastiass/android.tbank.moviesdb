@@ -1,4 +1,4 @@
-package com.anibalbastias.coolmovies.feature.movies.presentation.list
+package com.anibalbastias.coolmovies.feature.movies.ui.list
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.anibalbastias.coolmovies.feature.movies.domain.usecase.GetConfigurationUseCase
@@ -6,16 +6,12 @@ import com.anibalbastias.coolmovies.feature.movies.domain.usecase.GetDiscoverMov
 import com.anibalbastias.coolmovies.feature.movies.factory.ConfigurationFactory
 import com.anibalbastias.coolmovies.feature.movies.presentation.mapper.UiDiscoverMoviesMapper
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewmodel.MovieListViewModel
-import com.anibalbastias.coolmovies.feature.movies.presentation.viewstate.MovieDetailsViewState
-import com.anibalbastias.coolmovies.feature.movies.presentation.viewstate.MovieListViewState
 import com.anibalbastias.coolmovies.library.base.presentation.navigation.NavManager
 import com.anibalbastias.coolmovies.library.testutils.CoroutineRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

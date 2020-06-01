@@ -15,7 +15,7 @@ The goal of the project is to demonstrate best practices by using up to date tec
 but it has all of these small details that will set the rock-solid foundation for the larger app suitable for bigger teams
 and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
-This project is being maintained to match current industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
+This project is being maintained to match current industry standards and will be agregate more features as TV Series, Favorites and Profile.
 
 ## Project characteristics
 

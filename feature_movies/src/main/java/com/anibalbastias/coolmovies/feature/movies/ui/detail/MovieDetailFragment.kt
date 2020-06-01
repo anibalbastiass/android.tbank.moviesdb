@@ -1,5 +1,6 @@
-package com.anibalbastias.coolmovies.feature.movies.presentation.detail
+package com.anibalbastias.coolmovies.feature.movies.ui.detail
 
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
@@ -13,9 +14,11 @@ import com.anibalbastias.coolmovies.feature.movies.presentation.model.details.re
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewmodel.MovieDetailViewModel
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewstate.MovieDetailsViewState
 import com.anibalbastias.coolmovies.feature.movies.ui.MoviesNavigator
-import com.anibalbastias.coolmovies.feature.movies.presentation.detail.adapter.CreditAdapter
-import com.anibalbastias.coolmovies.feature.movies.presentation.detail.adapter.RecommendationAdapter
+import com.anibalbastias.coolmovies.feature.movies.ui.detail.adapter.CreditAdapter
+import com.anibalbastias.coolmovies.feature.movies.ui.detail.adapter.RecommendationAdapter
+import com.anibalbastias.coolmovies.library.base.presentation.extension.isNetworkAvailable
 import com.anibalbastias.coolmovies.library.base.presentation.extension.observe
+import com.anibalbastias.coolmovies.library.base.presentation.extension.toast
 import com.anibalbastias.coolmovies.library.base.presentation.fragment.BaseContainerFragment
 import com.anibalbastias.coolmovies.library.base.ui.adapter.base.BaseBindClickHandler
 import com.anibalbastias.coolmovies.library.base.ui.extension.applyFontForToolbarTitle
@@ -37,6 +40,7 @@ internal class MovieDetailFragment : BaseContainerFragment() {
     private val creditAdapter: CreditAdapter by instance()
     private val recommendationAdapter: RecommendationAdapter by instance()
     private val movieNavigator: MoviesNavigator by instance()
+    private val connectionManager: ConnectivityManager by instance()
 
     private val stateObserver = Observer<MovieDetailsViewState> {
         progressBar?.visible = it.isLoading
@@ -63,9 +67,14 @@ internal class MovieDetailFragment : BaseContainerFragment() {
         binding.lifecycleOwner = this
 
         viewModel.movieId = args.movieId
-        observe(viewModel.stateLiveData, stateObserver)
 
-        viewModel.loadData()
+
+        if (connectionManager.isNetworkAvailable()) {
+            observe(viewModel.stateLiveData, stateObserver)
+            viewModel.loadData()
+        } else {
+            activity?.toast(R.string.error_connection_internet)
+        }
 
         initToolbar()
         setAdapters()
@@ -84,11 +93,12 @@ internal class MovieDetailFragment : BaseContainerFragment() {
             runLayoutAnimation()
         }
 
-        recommendationAdapter.clickHandler = object : BaseBindClickHandler<UiMovieRecommendationsResults> {
-            override fun onClickView(view: View, item: UiMovieRecommendationsResults) {
-                movieNavigator.navigateToRecommendedMovieDetails(item)
+        recommendationAdapter.clickHandler =
+            object : BaseBindClickHandler<UiMovieRecommendationsResults> {
+                override fun onClickView(view: View, item: UiMovieRecommendationsResults) {
+                    movieNavigator.navigateToRecommendedMovieDetails(item)
+                }
             }
-        }
     }
 
     private fun initToolbar() {

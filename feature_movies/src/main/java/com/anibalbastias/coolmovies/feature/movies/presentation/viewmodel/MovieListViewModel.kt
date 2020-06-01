@@ -63,4 +63,8 @@ internal class MovieListViewModel(
             }
         }
     }
+
+    fun postErrorAction() {
+        sendAction(MovieListAction.MovieListLoadingFailure)
+    }
 }

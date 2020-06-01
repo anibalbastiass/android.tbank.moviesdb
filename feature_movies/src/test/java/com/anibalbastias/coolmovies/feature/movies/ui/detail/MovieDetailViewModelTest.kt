@@ -1,4 +1,4 @@
-package com.anibalbastias.coolmovies.feature.movies.presentation.detail
+package com.anibalbastias.coolmovies.feature.movies.ui.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.anibalbastias.coolmovies.feature.movies.domain.usecase.GetConfigurationUseCase

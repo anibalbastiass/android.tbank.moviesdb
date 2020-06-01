@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/movieListFragment"
-        android:name="com.anibalbastias.coolmovies.feature.movies.presentation.list.MovieListFragment"
+        android:name="com.anibalbastias.coolmovies.feature.movies.ui.list.MovieListFragment"
         android:label="MovieListFragment"
         app:moduleName="feature_movies"
         tools:layout="@layout/fragment_movie_list">
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.anibalbastias.coolmovies.feature.movies.presentation.detail.MovieDetailFragment"
+        android:name="com.anibalbastias.coolmovies.feature.movies.ui.detail.MovieDetailFragment"
         android:label="MovieDetailFragment"
         app:moduleName="feature_movies"
         tools:layout="@layout/fragment_movie_detail">

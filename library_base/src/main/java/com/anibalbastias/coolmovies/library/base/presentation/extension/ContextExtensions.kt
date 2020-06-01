@@ -2,6 +2,7 @@ package com.anibalbastias.coolmovies.library.base.presentation.extension
 
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -20,3 +21,5 @@ inline fun <reified T : AppCompatActivity> Context.startActivity(
     intent.putExtras(bundleOf(*extras))
     startActivity(intent)
 }
+
+fun ConnectivityManager.isNetworkAvailable() = activeNetworkInfo?.isConnected == true

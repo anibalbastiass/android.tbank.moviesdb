@@ -1,5 +1,6 @@
-package com.anibalbastias.coolmovies.feature.movies.presentation.list
+package com.anibalbastias.coolmovies.feature.movies.ui.list
 
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
@@ -12,8 +13,10 @@ import com.anibalbastias.coolmovies.feature.movies.presentation.model.UiMovieIte
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewmodel.MovieListViewModel
 import com.anibalbastias.coolmovies.feature.movies.presentation.viewstate.MovieListViewState
 import com.anibalbastias.coolmovies.feature.movies.ui.MoviesNavigator
-import com.anibalbastias.coolmovies.feature.movies.presentation.list.adapter.MovieAdapter
+import com.anibalbastias.coolmovies.feature.movies.ui.list.adapter.MovieAdapter
+import com.anibalbastias.coolmovies.library.base.presentation.extension.isNetworkAvailable
 import com.anibalbastias.coolmovies.library.base.presentation.extension.observe
+import com.anibalbastias.coolmovies.library.base.presentation.extension.toast
 import com.anibalbastias.coolmovies.library.base.presentation.fragment.BaseContainerFragment
 import com.anibalbastias.coolmovies.library.base.presentation.viewmodel.PaginationViewModel
 import com.anibalbastias.coolmovies.library.base.ui.adapter.base.BaseBindClickHandler
@@ -29,6 +32,7 @@ class MovieListFragment : BaseContainerFragment() {
     private val paginationViewModel: PaginationViewModel<UiMovieItem> by instance()
     private val movieAdapter: MovieAdapter by instance()
     private val movieNavigator: MoviesNavigator by instance()
+    private val connectionManager: ConnectivityManager by instance()
 
     private lateinit var binding: FragmentMovieListBinding
 
@@ -37,7 +41,7 @@ class MovieListFragment : BaseContainerFragment() {
         progressBar.visible = it.isLoading
         errorAnimation.visible = it.isError
 
-        if (!it.isLoading) {
+        if (!it.isLoading && !it.isError) {
             setPagination(it.movies)
         }
     }
@@ -73,14 +77,26 @@ class MovieListFragment : BaseContainerFragment() {
             progressBar.visible = false
             errorAnimation.visible = false
             setPagination(it)
-        } ?: viewModel.loadData()
+        } ?: run {
+            requestSecureData()
+        }
 
         srlMovies.initSwipe {
             paginationViewModel.run {
                 offset.set(firstPage)
                 viewModel.numPage = offset.get()
-                viewModel.loadData()
+                requestSecureData()
             }
+        }
+    }
+
+    private fun requestSecureData() {
+        if (connectionManager.isNetworkAvailable()) {
+            observe(viewModel.stateLiveData, stateObserver)
+            viewModel.loadData()
+        } else {
+            viewModel.postErrorAction()
+            activity?.toast(R.string.error_connection_internet)
         }
     }
 
