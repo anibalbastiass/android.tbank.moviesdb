@@ -31,7 +31,7 @@ object Constants {
     const val VOTE_AVERAGE = "vote_average"
     const val OVERVIEW = "overview"
     const val RELEASE_DATE = "release_date"
-    const val MOVIE_PATH = "{movie_id}"
+    const val MOVIE_PATH = "movie_id"
     const val CREDITS = "credits"
     const val RECOMMENDATIONS = "recommendations"
     const val IMDB_ID = "imdb_id"
@@ -68,4 +68,8 @@ object Constants {
     const val CREW = "crew"
     const val DEPARTMENT = "department"
     const val JOB = "job"
+    const val LANGUAGE = "language"
+    const val APPEND_TO_RESPONSE = "append_to_response"
+    const val EN_US = "en-US"
+    const val IMAGES_VIDEOS = "images,videos"
 }

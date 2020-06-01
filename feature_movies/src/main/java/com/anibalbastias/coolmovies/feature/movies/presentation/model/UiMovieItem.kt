@@ -1,5 +1,11 @@
 package com.anibalbastias.coolmovies.feature.movies.presentation.model
 
+import android.os.Parcelable
+import androidx.annotation.Keep
+import kotlinx.android.parcel.Parcelize
+
+@Keep
+@Parcelize
 data class UiMovieItem(
     val popularity: Double,
     val voteCount: Long,
@@ -15,7 +21,7 @@ data class UiMovieItem(
     val voteAverage: Double,
     val overview: String,
     val releaseDate: String
-) {
+) : Parcelable {
     companion object {
         private const val DEFAULT_EMPTY = ""
         private const val DEFAULT_LONG = 0

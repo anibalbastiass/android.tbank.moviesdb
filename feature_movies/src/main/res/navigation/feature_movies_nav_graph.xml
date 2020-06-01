@@ -3,41 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:moduleName="feature_movies"
-    app:startDestination="@id/albumListFragment"
+    app:startDestination="@id/movieListFragment"
     tools:ignore="UnusedNavigation">
 
     <fragment
-        android:id="@+id/albumListFragment"
+        android:id="@+id/movieListFragment"
         android:name="com.anibalbastias.coolmovies.feature.movies.ui.list.MovieListFragment"
-        android:label="AlbumListFragment"
+        android:label="MovieListFragment"
         app:moduleName="feature_movies"
         tools:layout="@layout/fragment_movie_list">
 
         <action
-            android:id="@+id/actionAlbumListToAlbumDetail"
-            app:destination="@id/albumDetailFragment" />
+            android:id="@+id/actionMovieListToMovieDetails"
+            app:destination="@id/movieDetailFragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/albumDetailFragment"
+        android:id="@+id/movieDetailFragment"
         android:name="com.anibalbastias.coolmovies.feature.movies.ui.detail.MovieDetailFragment"
-        android:label="AlbumDetailFragment"
+        android:label="MovieDetailFragment"
         app:moduleName="feature_movies"
-        tools:layout="@layout/fragment_album_detail">
+        tools:layout="@layout/fragment_movie_detail">
 
         <argument
-            android:name="artistName"
-            app:argType="string" />
-
-        <argument
-            android:name="albumName"
-            app:argType="string" />
-
-        <argument
-            android:name="mbId"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="movieItem"
+            app:argType="com.anibalbastias.coolmovies.feature.movies.presentation.model.UiMovieItem" />
 
     </fragment>
+
 </navigation>

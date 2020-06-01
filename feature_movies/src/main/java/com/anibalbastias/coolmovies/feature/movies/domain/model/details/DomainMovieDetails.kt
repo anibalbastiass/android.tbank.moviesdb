@@ -3,7 +3,7 @@ package com.anibalbastias.coolmovies.feature.movies.domain.model.details
 data class DomainMovieDetails(
 	val originalLanguage: String,
 	val imdbId: String,
-	val videos: DomainMovieVideos,
+	val videos: DomainMovieVideos?,
 	val video: Boolean,
 	val title: String,
 	val backdropPath: String,
@@ -15,7 +15,7 @@ data class DomainMovieDetails(
 	val voteCount: Int,
 	val budget: Int,
 	val overview: String,
-	val images: DomainMovieImages,
+	val images: DomainMovieImages?,
 	val originalTitle: String,
 	val runtime: Int,
 	val posterPath: String,
@@ -23,9 +23,10 @@ data class DomainMovieDetails(
 	val productionCompanies: List<DomainProductionCompanyItem>,
 	val releaseDate: String,
 	val voteAverage: Double,
-	val belongsToCollection: DomainMovieBelongsToCollection,
+	val belongsToCollection: DomainMovieBelongsToCollection?,
 	val tagLine: String,
 	val adult: Boolean,
 	val homepage: String,
-	val status: String
+	val status: String,
+	val isFavorite: Boolean
 )

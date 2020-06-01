@@ -7,13 +7,8 @@ import com.anibalbastias.coolmovies.library.base.presentation.navigation.NavMana
 class MoviesNavigator(private val navManager: NavManager) {
 
     fun navigateToMovieDetails(item: UiMovieItem) {
-        /*val navDirections =
-            MovieListFragmentDirections.actionAlbumListToAlbumDetail(
-                artistName,
-                albumName,
-                mbId
-            )
-        navManager.navigate(navDirections)*/
+        val navDirections = MovieListFragmentDirections.actionMovieListToMovieDetails(item)
+        navManager.navigate(navDirections)
     }
 
 }

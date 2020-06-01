@@ -19,6 +19,7 @@ internal class MovieListViewModel(
 ) {
 
     private lateinit var uiConfiguration: DomainConfiguration
+    var numPage: Int = 1
 
     override fun onLoadData() {
         getConfiguration()
@@ -49,7 +50,7 @@ internal class MovieListViewModel(
     private fun getMovieList() {
         viewModelScope.launch {
             val map = hashMapOf<String, String>()
-            getDiscoverMoviesUseCase.execute(map)?.also {
+            getDiscoverMoviesUseCase.execute(numPage, map)?.also {
                 if (it.isNotEmpty()) {
                     sendAction(
                         MovieListAction.MovieListLoadingSuccess(

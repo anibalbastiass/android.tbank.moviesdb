@@ -2,4 +2,6 @@
 <resources>
     <string name="data_not_found">Data not found</string>
     <string name="itemDescription">Item Description</string>
+    <string name="toolbar_image">Toolbar Image</string>
+    <string name="overview">Overview</string>
 </resources>

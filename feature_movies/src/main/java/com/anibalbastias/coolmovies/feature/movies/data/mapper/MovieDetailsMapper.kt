@@ -16,7 +16,7 @@ class MovieDetailsMapper {
         DomainMovieDetails(
             originalLanguage = originalLanguage ?: DEFAULT_STRING,
             imdbId = imdbId ?: DEFAULT_STRING,
-            videos = videos?.fromRemoteToDomain()!!,
+            videos = videos?.fromRemoteToDomain(),
             video = video ?: DEFAULT_BOOLEAN,
             title = title ?: DEFAULT_STRING,
             backdropPath = backdropPath ?: DEFAULT_STRING,
@@ -28,7 +28,7 @@ class MovieDetailsMapper {
             voteCount = voteCount ?: DEFAULT_INT,
             budget = budget ?: DEFAULT_INT,
             overview = overview ?: DEFAULT_STRING,
-            images = images?.fromRemoteToDomain()!!,
+            images = images?.fromRemoteToDomain(),
             originalTitle = originalTitle ?: DEFAULT_STRING,
             runtime = runtime ?: DEFAULT_INT,
             posterPath = posterPath ?: DEFAULT_STRING,
@@ -36,11 +36,12 @@ class MovieDetailsMapper {
             productionCompanies = productionCompanies?.map { it?.fromRemoteToDomain()!! }!!,
             releaseDate = releaseDate ?: DEFAULT_STRING,
             voteAverage = voteAverage ?: DEFAULT_DOUBLE,
-            belongsToCollection = belongsToCollection?.fromRemoteToDomain()!!,
+            belongsToCollection = belongsToCollection?.fromRemoteToDomain(),
             tagLine = tagLine ?: DEFAULT_STRING,
             adult = adult ?: DEFAULT_BOOLEAN,
             homepage = homepage ?: DEFAULT_STRING,
-            status = status ?: DEFAULT_STRING
+            status = status ?: DEFAULT_STRING,
+            isFavorite = DEFAULT_BOOLEAN
         )
 
     private fun RemoteMovieVideos.fromRemoteToDomain() = DomainMovieVideos(

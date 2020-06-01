@@ -1,8 +1,7 @@
 package com.anibalbastias.coolmovies
 
-import androidx.room.Room
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.anibalbastias.coolmovies.app.data.retrofit.AuthenticationInterceptor
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.Kodein

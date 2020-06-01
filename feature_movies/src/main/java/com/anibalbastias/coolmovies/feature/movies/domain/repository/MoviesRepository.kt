@@ -10,7 +10,7 @@ internal interface MoviesRepository {
 
     suspend fun getConfiguration(): DomainConfiguration?
 
-    suspend fun discoverMovies(map: HashMap<String, String>): List<DomainMovieItem>?
+    suspend fun discoverMovies(page: Int, map: HashMap<String, String>): List<DomainMovieItem>?
 
     suspend fun getMovieDetails(movieId: String, map: HashMap<String, String>): DomainMovieDetails?
 

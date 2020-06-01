@@ -1,6 +1,11 @@
 package com.anibalbastias.coolmovies.feature.movies.data.repository
 
 import com.anibalbastias.coolmovies.feature.movies.data.mapper.*
+import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.APPEND_TO_RESPONSE
+import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.EN_US
+import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.IMAGES_VIDEOS
+import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.LANGUAGE
+import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.Constants.PAGE
 import com.anibalbastias.coolmovies.feature.movies.data.retrofit.service.MoviesRetrofitService
 import com.anibalbastias.coolmovies.feature.movies.domain.model.configuration.DomainConfiguration
 import com.anibalbastias.coolmovies.feature.movies.domain.model.details.DomainMovieDetails
@@ -35,8 +40,9 @@ internal class RemoteRepositoryImpl(
         return remoteResults
     }
 
-    override suspend fun discoverMovies(map: HashMap<String, String>): List<DomainMovieItem>? =
+    override suspend fun discoverMovies(page: Int, map: HashMap<String, String>): List<DomainMovieItem>? =
         with(discoverMoviesMapper) {
+            map[PAGE] = "$page"
             moviesRetrofitService.discoverMoviesAsync(map)
                 ?.results
                 ?.map { it.fromRemoteToDomain() }
@@ -46,6 +52,8 @@ internal class RemoteRepositoryImpl(
         movieId: String,
         map: HashMap<String, String>
     ): DomainMovieDetails? = with(movieDetailsMapper) {
+        map[LANGUAGE] = EN_US
+        map[APPEND_TO_RESPONSE] = IMAGES_VIDEOS
         moviesRetrofitService.getMovieDetailsAsync(movieId, map)?.fromRemoteToDomain()
     }
 

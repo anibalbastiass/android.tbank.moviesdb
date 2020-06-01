@@ -23,16 +23,16 @@ internal interface MoviesRetrofitService {
     @GET("$DISCOVER/$MOVIE")
     suspend fun discoverMoviesAsync(@QueryMap map: HashMap<String, String>): RemoteDiscoverMovies?
 
-    @GET("$MOVIE/$MOVIE_PATH")
+    @GET("$MOVIE/{$MOVIE_PATH}")
     suspend fun getMovieDetailsAsync(
         @Path(MOVIE_PATH) movieId: String,
         @QueryMap map: HashMap<String, String>
     ): RemoteMovieDetails?
 
-    @GET("$MOVIE/$MOVIE_PATH/$CREDITS")
+    @GET("$MOVIE/{$MOVIE_PATH}/$CREDITS")
     suspend fun getMovieDetailsCreditsAsync(@Path(MOVIE_PATH) movieId: String): RemoteMovieCredits?
 
-    @GET("$MOVIE/$MOVIE_PATH/$RECOMMENDATIONS")
+    @GET("$MOVIE/{$MOVIE_PATH}/$RECOMMENDATIONS")
     suspend fun getMovieDetailsRecommendationsAsync(@Path(MOVIE_PATH) movieId: String): RemoteMovieRecommendations?
 
 }
