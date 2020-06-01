@@ -46,6 +46,10 @@ android {
         isExperimental = true
     }
 
+    lintOptions {
+        isAbortOnError = false
+    }
+
     // This "test" source set is a fix for SafeArgs classes not being available when running Unit tests from cmd
     // See: https://issuetracker.google.com/issues/139242292
     sourceSets {
