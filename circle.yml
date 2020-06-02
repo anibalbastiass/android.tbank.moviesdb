@@ -72,13 +72,14 @@ jobs:
 #      # multiple times for each build variant). We want to run "lintDebug" task, because it's faster.
 #      - run: ./gradlew lintDebug
 
-  unit_test:
-    <<: *container_config
-    steps:
-      - checkout
-      - restore-gradle-cache
+# Uncomment for a future
+#  unit_test:
+#    <<: *container_config
+#    steps:
+#      - checkout
+#      - restore-gradle-cache
       # --stacktrace is just a temporary flag to help with debugging of ConcurrentModificationException that happens occasionally
-      - run: ./gradlew testDebugUnitTest --stacktrace
+#      - run: ./gradlew testDebugUnitTest --stacktrace
 
   build_app:
     description: An executor with sensible defaults for Android Gradle tasks (set with GRADLE_OPTS).
@@ -107,12 +108,13 @@ workflows:
 #      - ktlint:
 #          requires:
 #            - update_dependency_cache
-      - unit_test:
-          requires:
-            - update_dependency_cache
-      - build_app:
-          requires:
+#      - unit_test:
+#          requires:
+#            - update_dependency_cache
+#      - build_app:
+#          requires:
 #            - lint
 #            - detekt
 #            - ktlint
-            - unit_test
+#            - unit_test
+       - build_app:
