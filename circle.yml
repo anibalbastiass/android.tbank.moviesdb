@@ -46,40 +46,38 @@ jobs:
           command: ./gradlew androidDependencies
       - save-gradle-cache
 
-# Uncomment for a future
-#  ktlint:
-#    <<: *container_config
-#    steps:
-#      - checkout
-#      - restore-gradle-cache
-#      - run: ./gradlew ktlintCheck
+  ktlint:
+    <<: *container_config
+    steps:
+      - checkout
+      - restore-gradle-cache
+      - run: ./gradlew ktlintCheck
 
-# Uncomment for a future
-#  detekt:
-#    <<: *container_config
-#    steps:
-#      - checkout
-#      - restore-gradle-cache
-#      - run: ./gradlew detekt
+  detekt:
+    <<: *container_config
+    steps:
+      - checkout
+      - restore-gradle-cache
+      - run: ./gradlew detekt
 
-# Uncomment for a future
-#  lint:
-#    <<: *container_config
-#    steps:
-#      - checkout
-#      - restore-gradle-cache
-#      # pure "lint" gradle task should be avoided because it is parent task for lintDebug and lintRelease (it runs lint
-#      # multiple times for each build variant). We want to run "lintDebug" task, because it's faster.
-#      - run: ./gradlew lintDebug
 
-# Uncomment for a future
-#  unit_test:
-#    <<: *container_config
-#    steps:
-#      - checkout
-#      - restore-gradle-cache
+  lint:
+    <<: *container_config
+    steps:
+      - checkout
+      - restore-gradle-cache
+      # pure "lint" gradle task should be avoided because it is parent task for lintDebug and lintRelease (it runs lint
+      # multiple times for each build variant). We want to run "lintDebug" task, because it's faster.
+      - run: ./gradlew lintDebug
+
+
+  unit_test:
+    <<: *container_config
+    steps:
+      - checkout
+      - restore-gradle-cache
       # --stacktrace is just a temporary flag to help with debugging of ConcurrentModificationException that happens occasionally
-#      - run: ./gradlew testDebugUnitTest --stacktrace
+      - run: ./gradlew testDebugUnitTest --stacktrace
 
   build_app:
     description: An executor with sensible defaults for Android Gradle tasks (set with GRADLE_OPTS).
@@ -98,20 +96,20 @@ workflows:
   check:
     jobs:
       - update_dependency_cache
-#      - lint:
-#          requires:
-#            - update_dependency_cache
-# Uncomment for a future
-#      - detekt:
-#          requires:
-#            - update_dependency_cache
-#      - ktlint:
-#          requires:
-#            - update_dependency_cache
-#      - unit_test:
-#          requires:
-#            - update_dependency_cache
+      - lint:
+          requires:
+            - update_dependency_cache
+      - detekt:
+          requires:
+            - update_dependency_cache
+      - ktlint:
+          requires:
+            - update_dependency_cache
+      - unit_test:
+          requires:
+            - update_dependency_cache
       - build_app
+# Uncomment for fix/build-ci      
 #          requires:
 #            - lint
 #            - detekt
