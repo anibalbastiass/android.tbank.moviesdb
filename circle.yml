@@ -111,10 +111,9 @@ workflows:
 #      - unit_test:
 #          requires:
 #            - update_dependency_cache
-#      - build_app:
+      - build_app
 #          requires:
 #            - lint
 #            - detekt
 #            - ktlint
 #            - unit_test
-       - build_app:
