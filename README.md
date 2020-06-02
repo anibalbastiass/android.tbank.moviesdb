@@ -9,7 +9,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/anibalbastiass/android.tbank.moviesdb/badge)](https://www.codefactor.io/repository/github/anibalbastiass/android.tbank.moviesdb)
 
 
-Transbank CL Challenge technical test for Android Developer
+TMDB Challenge technical test for Android Developer
 
 The goal of the project is to demonstrate best practices by using up to date tech-stack and presenting modern Android application
 [Architecture](#architecture) that is modular, scalable, maintainable, and testable. This application may look quite simple,
