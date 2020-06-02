@@ -96,18 +96,19 @@ workflows:
   check:
     jobs:
       - update_dependency_cache
-      - lint:
-          requires:
-            - update_dependency_cache
-      - detekt:
-          requires:
-            - update_dependency_cache
-      - ktlint:
-          requires:
-            - update_dependency_cache
-      - unit_test:
-          requires:
-            - update_dependency_cache
+# Uncomment for fix/build-ci      
+#      - lint:
+#          requires:
+#            - update_dependency_cache
+#      - detekt:
+#          requires:
+#            - update_dependency_cache
+#      - ktlint:
+#          requires:
+#            - update_dependency_cache
+#      - unit_test:
+#          requires:
+#            - update_dependency_cache
       - build_app
 # Uncomment for fix/build-ci      
 #          requires:
