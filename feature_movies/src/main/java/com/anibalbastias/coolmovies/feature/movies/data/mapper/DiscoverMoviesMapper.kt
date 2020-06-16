@@ -20,7 +20,7 @@ class DiscoverMoviesMapper {
             title = title,
             voteAverage = voteAverage,
             overview = overview,
-            releaseDate = releaseDate
+            releaseDate = releaseDate ?: ""
         )
 
 }

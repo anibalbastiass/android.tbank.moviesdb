@@ -15,7 +15,11 @@
 
         <action
             android:id="@+id/actionMovieListToMovieDetails"
-            app:destination="@id/movieDetailFragment" />
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/fade_in_fragment"
+            app:exitAnim="@anim/fade_out_fragment"
+            app:popEnterAnim="@anim/fade_in_fragment"
+            app:popExitAnim="@anim/fade_out_fragment"/>
 
     </fragment>
 
@@ -32,7 +36,11 @@
 
         <action
             android:id="@+id/actionMovieDetailsToRecommendationDetails"
-            app:destination="@id/movieDetailFragment" />
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/fade_in_fragment"
+            app:exitAnim="@anim/fade_out_fragment"
+            app:popEnterAnim="@anim/fade_in_fragment"
+            app:popExitAnim="@anim/fade_out_fragment"/>
 
     </fragment>
 

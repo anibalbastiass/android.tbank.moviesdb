@@ -30,5 +30,5 @@ data class RemoteMovieItem(
     @field:Json(name = TITLE) val title: String,
     @field:Json(name = VOTE_AVERAGE) val voteAverage: Double,
     @field:Json(name = OVERVIEW) val overview: String,
-    @field:Json(name = RELEASE_DATE) val releaseDate: String
+    @field:Json(name = RELEASE_DATE) val releaseDate: String?
 )
